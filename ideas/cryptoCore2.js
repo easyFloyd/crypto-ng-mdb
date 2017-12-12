@@ -35,7 +35,13 @@
         return {
             Symbol: priceData.FROMSYMBOL,
             ToSymbol: priceData.TOSYMBOL,
-            Price: priceData.PRICE
+            Price: priceData.PRICE,
+            Open_24h: priceData.OPEN24HOUR,
+            High_24h: priceData.HIGH24HOUR,
+            Low_24h: priceData.LOW24HOUR,
+            Change_24h: priceData.CHANGE24HOUR,
+            Change_pct_24h: priceData.CHANGEPCT24HOUR,
+            MarketCap: priceData.MKTCAP
         }
     }
     
