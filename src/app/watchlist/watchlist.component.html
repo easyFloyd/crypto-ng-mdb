@@ -1,0 +1,17 @@
+<div class="conatiner m-5">
+  <div class="row align-items-center mt-2 p-1 rounded border border-0 text-main bg-slide"
+    *ngFor="let item of watchlist.CoinItems">
+      <div class="col-6 d-flex justify-content-start text-nowrap">
+          <img class="my-auto mr-1" [src]="item.img_16x16_src" height="16" width="16">
+          <div class="text-uppercase"><strong>{{ item.name }} ({{ item.symbol }})</strong></div>
+      </div>
+      <div class="col-6 d-flex justify-content-end border border-top-0 border-right-0 border-left-0 border-primary">
+          <div><strong>$ {{ item.price_usd }}</strong></div>
+      </div>
+      <div class="col-12 d-flex justify-content-end font-size-07">
+          <span><strong class="text-profit">{{ item.percent_change_24h }}%(24h)</strong><strong class="mx-1">|</strong></span>
+          <span><strong class="text-loss">{{ item.percent_change_1h }}%(1d)</strong><strong class="mx-1">|</strong></span>
+          <span><strong class="text-profit">{{ item.percent_change_7d }}%(7d)</strong></span>
+      </div>
+  </div>
+</div>
