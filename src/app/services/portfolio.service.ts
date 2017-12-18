@@ -18,10 +18,11 @@ export class PortfolioService {
     }
 
     refreshPortfolio(portfolio: Portfolio) {
-        this.coinDataService.refreshCoins(portfolio.CoinItems);
-        this.calculatePortFolioValue(portfolio);
-        this.calculateInvestment(portfolio);
-        this.calculateProfit(portfolio);
+        this.coinDataService.refreshCoins(portfolio.CoinItems).then(() => {
+            this.calculatePortFolioValue(portfolio);
+            this.calculateInvestment(portfolio);
+            this.calculateProfit(portfolio);
+        });
     }
 
     refreshUserPortfolios() {
@@ -44,6 +45,9 @@ export class PortfolioService {
 
     private calculateProfit(portfolio: Portfolio) {
         portfolio.profit = portfolio.portfolioValue - portfolio.investment;
+        portfolio.profitPercent = portfolio.investment === 0 ?
+            100 :
+            portfolio.profit / (portfolio.investment / 100);
     }
 
 }

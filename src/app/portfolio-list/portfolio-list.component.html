@@ -8,8 +8,12 @@
             <div><strong>{{ portfolio.valueText }}</strong></div>
         </div>
         <div class="col-12 d-flex justify-content-center font-size-07">
-            <span><strong class="text-profit">+ $ 1.411,04</strong><strong class="mx-1">|</strong></span>
-            <span><strong class="text-profit">+47.34%</strong></span>
+            <span><strong 
+                [ngClass]="{ 'text-profit': portfolio.profit >= 0, 'text-loss': portfolio.profit < 0 }"
+                >{{ portfolio.profitText }}</strong><strong class="mx-1">|</strong></span>
+            <span><strong 
+                [ngClass]="{ 'text-profit': portfolio.profitPercent >= 0, 'text-loss': portfolio.profitPercent < 0 }"
+                >{{ portfolio.profitPercentText }}</strong></span>
         </div>
     </div>
 </div>

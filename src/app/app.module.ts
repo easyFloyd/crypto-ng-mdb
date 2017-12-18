@@ -23,6 +23,7 @@ import { NavigationService } from 'app/services/navigation.service';
 import { PortfolioResolver } from 'app/services/resolvers/portfolio-resolver.service';
 import { WatchlistItemResolver } from 'app/services/resolvers/watchlist-item-resolver.service';
 import { AppRoutingModule } from 'app/app-routing.module';
+import { CmcService } from 'app/services/cmc.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { AppRoutingModule } from 'app/app-routing.module';
     }),
     AppRoutingModule
   ],
-  providers: [UserService, PortfolioService, WatchlistService, CoinDataService,
+  providers: [UserService, PortfolioService, WatchlistService, CoinDataService, CmcService,
     NavigationService, PortfolioResolver, WatchlistItemResolver],
   bootstrap: [AppComponent],
   schemas:      [ NO_ERRORS_SCHEMA ]

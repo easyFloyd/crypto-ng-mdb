@@ -1,7 +1,6 @@
 import { CoinItem } from './coinitem.model';
 import { CashFlow } from './cashflow.model';
-
-declare var _cc: any;
+import { TextHelper } from 'app/utils/TextHelper';
 
 export class Portfolio {
     public CoinItems: CoinItem[] = [];
@@ -10,20 +9,25 @@ export class Portfolio {
     public portfolioValue = 0;
     public investment = 0;
     public profit = 0;
+    public profitPercent = 0;
 
     constructor(
         public portfolioId: number, public name: string
     ) {}
 
-    get headerText() {
-        return this.name + ' (' + _cc.utils.toCurrencyString(this.portfolioValue) + ')';
-    }
+    // get headerText() {
+    //     return this.name + ' (' + TextHelper.toCurrencyString(this.portfolioValue) + ')';
+    // }
 
     get valueText() {
-        return  _cc.utils.toCurrencyString(this.portfolioValue);
+        return  TextHelper.toCurrencyString(this.portfolioValue);
     }
 
     get profitText() {
-        return  _cc.utils.toCurrencyString(this.investment);
+        return  TextHelper.toCurrencyString(this.profit);
+    }
+
+    get profitPercentText() {
+        return TextHelper.toPercentString(this.profitPercent);
     }
 }

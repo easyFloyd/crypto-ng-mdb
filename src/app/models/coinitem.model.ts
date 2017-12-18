@@ -1,3 +1,5 @@
+import { TextHelper } from 'app/utils/TextHelper';
+
 
 export class CoinItem {
     public id: string;
@@ -16,7 +18,6 @@ export class CoinItem {
     public amount: number;
     public value: number;
 
-    coinObj: any;
     initialized: boolean;
 
     constructor(id: string) {
@@ -26,7 +27,15 @@ export class CoinItem {
         this.amount = 0;
     }
 
-    get value_usd() {
+    get value_usd(): number {
         return this.value * this.price_usd;
+    }
+
+    get value_usd_text(): string {
+        return TextHelper.toCurrencyString(this.value_usd);
+    }
+
+    get price_usd_text(): string {
+        return TextHelper.toCurrencyString(this.price_usd);
     }
 }

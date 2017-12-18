@@ -61,6 +61,6 @@ export class NavigationService {
               break;
             default:
               break;
-          }
+        }
     }
 }
