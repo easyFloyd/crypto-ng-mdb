@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { Portfolio } from '../models/portfolio.model';
 import { CoinDataService } from './coindata.service';
+import { PortfolioSum } from 'app/models/portfoliosum.model';
 
 @Injectable()
 export class PortfolioService {
 
     constructor(private userService: UserService, private coinDataService: CoinDataService) {}
 
-    getUserPortfolios() {
+    getUserPortfolios(): Portfolio[] {
         const currentUser = this.userService.getCurrentUser();
         if (currentUser != null) {
             return currentUser.portfolios;
@@ -17,8 +18,17 @@ export class PortfolioService {
         }
     }
 
-    refreshPortfolio(portfolio: Portfolio) {
-        this.coinDataService.refreshCoins(portfolio.CoinItems).then(() => {
+    getUserPortfolioSum(): PortfolioSum {
+        const currentUser = this.userService.getCurrentUser();
+        if (currentUser != null) {
+            return currentUser.portfolioSum;
+        } else {
+            return new PortfolioSum();
+        }
+    }
+
+    refreshPortfolio(portfolio: Portfolio): Promise<void> {
+        return this.coinDataService.refreshCoins(portfolio.CoinItems).then(() => {
             this.calculatePortFolioValue(portfolio);
             this.calculateInvestment(portfolio);
             this.calculateProfit(portfolio);
@@ -26,9 +36,18 @@ export class PortfolioService {
     }
 
     refreshUserPortfolios() {
+        const refreshedPortofolios: Promise<void>[] = [];
         this.getUserPortfolios().forEach(portfolio => {
-            this.refreshPortfolio(portfolio);
+            refreshedPortofolios.push(this.refreshPortfolio(portfolio));
           });
+        Promise.all(refreshedPortofolios).then(() => {
+            const portfolioSum = this.getUserPortfolioSum();
+            portfolioSum.investment = portfolioSum.value = 0;
+            this.getUserPortfolios().forEach(portfolio => {
+                portfolioSum.value += portfolio.portfolioValue;
+                portfolioSum.investment += portfolio.investment;
+            });
+        });
     }
 
     private calculatePortFolioValue(portfolio: Portfolio) {
@@ -39,7 +58,7 @@ export class PortfolioService {
 
     private calculateInvestment(portfolio: Portfolio) {
         let invValue = 0;
-        portfolio.CoinItems.forEach(coin => { invValue += coin.amount; });
+        portfolio.CashFlowItems.forEach(cashFlow => { invValue += cashFlow.amount; });
         portfolio.investment = invValue;
     }
 

@@ -1,7 +1,7 @@
 <div class="conatiner m-5">
-    <div class="row align-items-center mt-2 p-1 rounded border border-0 text-main bg-slide"
+    <div class="row align-items-center mt-2 p-1 rounded border border-0 text-main bg-slide cursor-pointer"
       *ngFor="let portfolio of portfolioList" (click)="onSelect(portfolio.portfolioId)">
-      <div class="col-6 d-flex justify-content-start text-nowrap">
+        <div class="col-6 d-flex justify-content-start text-nowrap">
             <div class="text-uppercase"><strong>{{ portfolio.name }}</strong></div>
         </div>
         <div class="col-6 d-flex justify-content-end border border-top-0 border-right-0 border-left-0 border-primary">

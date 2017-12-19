@@ -29,7 +29,21 @@ export class UserService {
                 {date: '2017.11.30', amount: 760}
             ],
             portfolioItems: [
-                { id: 'bitcoin', amount: 0.0734 }
+                { id: 'bitcoin', amount: 0.0474 },
+                { id: 'litecoin', amount: 0.56143116},
+                { id: 'iota', amount: 32.21908981 },
+                { id: 'omisego', amount: 5.79831153 },
+                { id: 'bitcoin-cash', amount: 0.06094309}
+            ]
+        },
+        twentyk : {
+            name: '20k Chicago',
+            id: 3,
+            cashflow: [
+                {date: '2017.12.18', amount: 375}
+            ],
+            portfolioItems: [
+                { id: 'bitcoin', amount: 0.01963 }
             ]
         },
         watchlist : {
@@ -64,7 +78,9 @@ export class UserService {
             val.portfolioItems.forEach(element => {
                 const nw = new CoinItem(element.id);
                 nw.value = element.amount;
-                pModel.CoinItems.push(nw);
+                if (!pModel.CoinItems.some(x => x.id === element.id)) {
+                    pModel.CoinItems.push(nw);
+                }
                 if (pModel !== user.watchList && !user.watchList.CoinItems.some(x => x.id === element.id)) {
                     user.watchList.CoinItems.push(nw);
                 }
