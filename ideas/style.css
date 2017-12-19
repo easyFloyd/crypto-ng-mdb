@@ -1,0 +1,75 @@
+/* Your custom styles */
+
+.bg-main {
+    background-color: rgba(230,230,230,1)
+}
+
+.bg-slide {
+    background-color: rgba(255,255,255,0.8)
+}
+
+.bg-menu {
+    background-color: rgba(10,147,226,0.8)
+}
+
+.bg-menu-gradient {
+    background: linear-gradient(40deg,rgba(10,147,226,0.4),rgba(10,147,226,0.8))
+/*    background-color: rgba(10,147,226,0.8)*/
+}
+
+.fill-80-viewport {
+  min-height: 80vh
+}
+
+.text-main {
+    color: rgba(10,147,226,1)
+}
+
+.text-profit {
+    color: rgba(65,181,42,1);
+}
+
+.text-loss {
+    color: rgba(181,42,42,1);
+}
+
+.text-white {
+    padding-top: .5rem;
+    padding-right: 1rem;
+    display: table-cell;
+    color: rgba(0,0,0,1);
+    vertical-align: middle;
+}
+
+.font-size-07 {
+    font-size: 0.7rem;
+}
+
+
+.testimonial-card .card-up {
+    overflow: hidden;
+    height: 47px;
+    border-radius: .3rem .3rem 0 0;
+}
+
+.card-up {
+    display: table;
+    width: 100%;
+}
+
+.testimonial-card .avatar {
+    border-radius: 50%;
+    height: 47px;
+    width: 47px;
+    margin: -22px 0 -44px;
+    overflow: hidden;
+    border: 3px solid #fff
+}
+
+.testimonial-card .avatar img {
+    width: 100%
+}
+
+.testimonial-card .card-body {
+    text-align: center
+}
