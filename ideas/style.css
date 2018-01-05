@@ -13,6 +13,10 @@
     border-radius: .3rem .3rem 0 0;
 }
 
+.bg-blue {
+	background-color: rgba(10,147,226,1)
+}
+
 .bg-menu-gradient {
     background: linear-gradient(40deg,rgba(10,147,226,0.4),rgba(10,147,226,0.8))
 /*    background-color: rgba(10,147,226,0.8)*/
@@ -88,4 +92,11 @@
 
 .testimonial-card .card-body {
     text-align: center
+}
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  height: 50%;
 }
